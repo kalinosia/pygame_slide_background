@@ -1,0 +1,29 @@
+import pygame
+import time
+
+
+#SCREEN
+
+screenX=360
+screenY=640
+screen = pygame.display.set_mode((screenX, screenY))
+#pygame.display.set_caption("Xmas Time To Game")
+screen.fill((25,25,255))
+background = pygame.image.load('img/background.jpg').convert() #conxert to faster work?
+background = pygame.transform.scale(background, (screenX, screenY))
+bg_pos_first=0
+bg_pos_second=360
+
+
+def screen_update(bg_pos_first, bg_pos_second):
+    bg_pos_first-=1
+    bg_pos_second-=1
+
+    if bg_pos_first == -screenX:
+        bg_pos_first=screenX
+    elif bg_pos_second==-screenX:
+        bg_pos_second=screenX
+
+    screen.blit(background, (bg_pos_first, 0))
+    screen.blit(background, (bg_pos_second, 0))
+    return bg_pos_first, bg_pos_second
